@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>contact us form to email using java script</title>
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+        <div class="container">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h3>GET IN TOUCH</h3>
+                <input type="text" id="name" placeholder="Your name" required>
+                <input type="email" id="email" placeholder="Email id" required>
+                <input type="text" id="phone" placeholder="phone no." required>
+                <textarea  id="message" rows="4" placeholder="How can we gelp you?"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <script src= "https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(){
+                Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "vrishanksharma08@gmail.com",
+                    Password : "vishi,01",
+                    To : "rensansharma@gmail.com",
+                    From : document.getElementById("email").value,
+                    Subject : "New contct form enquiry",
+                    Body : "Name: " + document.getElementById("name").value
+                        + "<br> Email: " +  document.getElementById("email").value
+                        + "<br> Phone no: " +  document.getElementById("phone").value
+                        + "<br> Message: " +  document.getElementById("message").value
+                }).then(
+                message => alert("message sent succesfully")
+                );
+            }
+        </script>
+    </body>
+</html>
